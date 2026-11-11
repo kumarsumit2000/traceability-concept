@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traceability Concept – Ayurvedant</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F4F6EC;font-family:Poppins,system-ui,sans-serif}</style>
+</head>
+<body>
+<div role="note" style="background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Traceability concept for Ayurvedant · sample data — not an official Ayurvedant page</div>
+
+<div class="tr" id="tr">
+
+  <!-- 1. Lookup -->
+  <section id="trLookup" class="tr-lookup" hidden>
+    <div class="tr-lookup__card">
+      <div class="tr-lookup__icon" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v3M14 20h3M20 20h1"/></svg>
+      </div>
+      <p class="tr-eyebrow">Trace the journey</p>
+      <h1>Trace Your Product</h1>
+      <p class="tr-lookup__help">Enter the batch number printed on your pack to see its complete journey.</p>
+      <form class="tr-lookup__form" id="trForm" novalidate>
+        <input id="trInput" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false"
+               maxlength="32" aria-label="Batch number" aria-describedby="trFormError">
+        <button id="trBtn" type="submit"><span id="trBtnLabel">Trace My Product</span><span class="tr-spin" id="trBtnSpin" hidden></span></button>
+      </form>
+      <p class="tr-lookup__error" id="trFormError" role="alert" hidden></p>
+      <p class="tr-lookup__hint">You'll find the batch number near the best-before date on the label.</p>
+    </div>
+  </section>
+
+  <!-- 2. Loading (deep link) -->
+  <div id="trLoading" class="tr-loading" role="status" hidden><span class="tr-spin tr-spin--dark"></span> Loading your product's journey…</div>
+
+  <!-- 3. Result -->
+  <section id="trResult" hidden>
+    <div class="tr-hero">
+      <div class="tr-hero__text">
+        <p class="tr-eyebrow">Trace the journey</p>
+        <h1 class="tr-hero__title">Trace the Journey<br>of Your <span id="trHeroWord"></span></h1>
+        <p class="tr-hero__product" id="trHeroProduct"></p>
+        <p class="tr-hero__tagline" id="trHeroTagline"></p>
+      </div>
+      <div class="tr-hero__img" id="trHeroImg"></div>
+    </div>
+
+    <div class="tr-strip">
+      <div class="tr-strip__cell">
+        <span class="tr-strip__label">Batch Number</span>
+        <span class="tr-strip__value tr-mono" id="trBatchNo"></span>
+        <span class="tr-pill tr-pill--green"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Verified</span>
+      </div>
+      <div class="tr-strip__cell">
+        <svg class="tr-strip__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span class="tr-strip__label">Manufacture date</span>
+        <span class="tr-strip__value" id="trMfg"></span>
+      </div>
+      <div class="tr-strip__cell">
+        <svg class="tr-strip__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span class="tr-strip__label">Best before</span>
+        <span class="tr-strip__value" id="trBB"></span>
+      </div>
+      <div class="tr-strip__cell">
+        <svg class="tr-strip__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg>
+        <span class="tr-strip__label">Quality check</span>
+        <span class="tr-strip__value" id="trQC"></span>
+      </div>
+    </div>
+
+    <div class="tr-journey">
+      <div class="tr-journey__head"><span class="tr-rule"></span><h2>The Journey</h2><span class="tr-rule"></span></div>
+      <p class="tr-journey__sub" id="trJourneySub"></p>
+      <ol class="tr-timeline" id="trTimeline"></ol>
+    </div>
+
+    <div class="tr-lab" id="trLab" hidden>
+      <div>
+        <div class="tr-lab__title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
+          <strong>Lab Test Report</strong>
+          <span class="tr-pill tr-pill--green"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Verified</span>
+        </div>
+        <div class="tr-lab__chips" id="trLabChips"></div>
+      </div>
+      <a id="trLabLink" class="tr-lab__btn" target="_blank" rel="noopener nofollow">View Report</a>
+    </div>
+    <div class="tr-lab" id="trLabPending" hidden>
+      <div class="tr-lab__title"><strong>Lab report will be published here shortly.</strong></div>
+    </div>
+
+    <div class="tr-trust">
+      <div class="tr-trust__text">
+        <h3 id="trTrustTitle"></h3>
+        <p id="trTrustCopy"></p>
+        <div class="tr-trust__chips" id="trTrustChips"></div>
+      </div>
+      <p class="tr-trust__from" id="trTrustFrom"></p>
+    </div>
+
+    <div class="tr-again">
+      <button id="trAgainBtn" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/></svg>
+        Trace another product
+      </button>
+    </div>
+  </section>
+</div>
+
+<style>
+.tr{
+  /* Brand tokens — override per brand (build_demo.py) or via Shopify section settings */
+  --tr-ink:#4A2A16;--tr-ink2:#5E3A22;--tr-accent:#7A4A1E;--tr-text:#4A2E1A;--tr-muted:#8A6A4A;--tr-label:#9A7A55;
+  --tr-bg:#F4EFE2;--tr-surface:#FBF7EE;--tr-line:#E0CFAE;--tr-rail:#C9A678;--tr-soft:#EFD9A8;--tr-green:#2c7a3f;
+  --tr-hero:linear-gradient(120deg,#F7F1E0 0%,#F1E6CC 55%,#EBDCB8 100%);--tr-trust-bg:#F1E9DA;--tr-shadow:74,42,22;
+  --tr-heading:"Young Serif";
+  --tr-serif:var(--tr-heading),Georgia,serif;
+  max-width:1080px;margin:0 auto;padding:24px 16px 60px;color:var(--tr-text);font-size:14px;box-sizing:border-box}
+.tr *,.tr *::before,.tr *::after{box-sizing:border-box}
+.tr h1,.tr h2,.tr h3{font-family:var(--tr-serif);font-weight:400;letter-spacing:normal}
+.tr [hidden]{display:none!important}
+.tr-eyebrow{font-size:11px;letter-spacing:3px;color:var(--tr-accent);text-transform:uppercase;margin:0 0 6px;font-weight:600}
+.tr-mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+.tr-spin{width:16px;height:16px;border:2px solid var(--tr-soft);border-top-color:transparent;border-radius:50%;display:inline-block;animation:trspin .7s linear infinite}
+.tr-spin--dark{border-color:var(--tr-label);border-top-color:transparent}
+@keyframes trspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.tr-spin{animation-duration:2s}}
+.tr-pill{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:999px}
+.tr-pill--green{background:#DDEEDD;color:var(--tr-green)}
+.tr-chip{font-size:11px;color:var(--tr-accent);border:1px solid var(--tr-line);border-radius:999px;padding:4px 11px;background:var(--tr-bg)}
+
+/* lookup */
+.tr-lookup{padding:40px 0}
+.tr-lookup__card{max-width:440px;margin:0 auto;background:var(--tr-surface);border:1px solid var(--tr-line);border-radius:18px;padding:38px 30px;text-align:center}
+.tr-lookup__icon{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:var(--tr-soft);color:var(--tr-accent);display:flex;align-items:center;justify-content:center}
+.tr-lookup__card h1{font-size:26px;color:var(--tr-ink2);margin:0 0 8px}
+.tr-lookup__help{font-size:13px;color:var(--tr-muted);margin:0 0 18px}
+.tr-lookup__form{display:flex;flex-direction:column;gap:10px}
+#trInput{width:100%;padding:13px 16px;border:1.5px solid var(--tr-line);border-radius:10px;background:#fff;font-size:16px;letter-spacing:2px;text-align:center;text-transform:uppercase;color:var(--tr-text);font-family:ui-monospace,Menlo,Consolas,monospace}
+#trInput:focus{border-color:var(--tr-accent);outline:2px solid var(--tr-soft)}
+#trInput::placeholder{letter-spacing:1px;color:var(--tr-label);text-transform:none;font-family:inherit}
+#trBtn{width:100%;padding:13px 18px;border:0;border-radius:10px;background:var(--tr-ink2);color:var(--tr-bg);font:inherit;font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+#trBtn:hover{background:var(--tr-ink)}#trBtn[disabled]{opacity:.6;cursor:wait}
+.tr-lookup__error{margin:12px 0 0;font-size:13px;color:#8f2f2f;background:#F6E3DE;border:1px solid #E0B4A8;border-radius:8px;padding:10px 14px}
+.tr-lookup__hint{margin:14px 0 0;font-size:11.5px;color:var(--tr-label)}
+.tr-loading{padding:70px 0;color:var(--tr-muted);display:flex;gap:10px;align-items:center;justify-content:center}
+
+/* hero */
+.tr-hero{background:var(--tr-hero);border:1px solid var(--tr-line);border-radius:18px;padding:34px 38px;display:grid;grid-template-columns:1.2fr .8fr;grid-template-areas:"text img";gap:8px 24px}
+.tr-hero__text{grid-area:text;align-self:center}
+.tr .tr-hero__title{font-size:34px;line-height:1.2;color:var(--tr-ink);margin:0 0 12px;font-weight:700}
+.tr-hero__title span{text-transform:capitalize}
+.tr-hero__product{font-size:14px;font-weight:600;color:var(--tr-ink2);margin:0 0 4px}
+.tr-hero__tagline{font-size:13.5px;color:var(--tr-muted);margin:0;max-width:340px}
+.tr-hero__img{grid-area:img;display:flex;align-items:center;justify-content:center}
+.tr-hero__img img{max-height:220px;max-width:100%;border-radius:14px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(var(--tr-shadow),.18))}
+
+/* info strip */
+.tr-strip{background:var(--tr-surface);border:1px solid var(--tr-line);border-radius:14px;margin-top:16px;padding:16px 10px;display:grid;grid-template-columns:repeat(4,1fr)}
+.tr-strip__cell{display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 12px;border-right:1px solid var(--tr-line);text-align:center}
+.tr-strip__cell:last-child{border-right:0}
+.tr-strip__icon{color:var(--tr-accent)}
+.tr-strip__label{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--tr-label)}
+.tr-strip__value{font-size:15px;font-weight:600;color:var(--tr-ink2)}
+
+/* journey */
+.tr-journey{padding:44px 0 8px;text-align:center}
+.tr-journey__head{display:flex;align-items:center;justify-content:center;gap:16px}
+.tr-journey__head h2{font-size:24px;letter-spacing:2px;color:var(--tr-accent);text-transform:uppercase;margin:0}
+.tr-rule{width:46px;height:2px;background:var(--tr-rail);border-radius:2px}
+.tr-journey__sub{font-size:13px;color:var(--tr-muted);margin:8px 0 34px}
+.tr-timeline{max-width:640px;margin:0 auto;padding:0;list-style:none;text-align:left}
+.tr-step{display:grid;grid-template-columns:56px 34px 1fr auto;gap:0 16px;align-items:start;margin:0}
+.tr-step__rail{grid-column:1;grid-row:1/span 2;display:flex;flex-direction:column;align-items:center;align-self:stretch}
+.tr-step__dot{width:56px;height:56px;flex:none;border-radius:50%;background:var(--tr-ink2);color:var(--tr-bg);display:flex;align-items:center;justify-content:center;border:3px solid var(--tr-soft);box-shadow:0 2px 8px rgba(var(--tr-shadow),.2)}
+.tr-step__line{width:2px;flex:1;min-height:40px;background:var(--tr-rail);margin:2px 0}
+.tr-step:last-child .tr-step__line{display:none}
+.tr-step__num{grid-column:2;font-size:15px;font-weight:700;color:var(--tr-rail);padding-top:17px}
+.tr-step__body{grid-column:3;padding:8px 0 30px}
+.tr-step:last-child .tr-step__body{padding-bottom:6px}
+.tr-step__name{font-size:17px;font-weight:700;color:var(--tr-ink2)}
+.tr-step__desc{font-size:12.5px;color:var(--tr-muted);margin-top:3px;max-width:300px}
+.tr-step__date{grid-column:4;justify-self:end;margin-top:14px;display:inline-flex;align-items:center;gap:6px;background:var(--tr-bg);border:1px solid var(--tr-line);color:var(--tr-accent);font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px;white-space:nowrap}
+.tr-step--pending .tr-step__dot{background:var(--tr-surface);color:var(--tr-rail)}
+
+/* lab */
+.tr-lab{margin-top:26px;background:var(--tr-surface);border:1px solid var(--tr-line);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.tr-lab__title{display:flex;align-items:center;gap:9px;color:var(--tr-accent)}
+.tr-lab__title strong{color:var(--tr-ink2);font-size:14.5px}
+.tr-lab__chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.tr .tr-lab__btn{background:var(--tr-ink2);color:var(--tr-bg);font-size:12.5px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none}
+.tr .tr-lab__btn:hover{background:var(--tr-ink);color:var(--tr-bg)}
+
+/* trust */
+.tr-trust{margin-top:18px;background:var(--tr-trust-bg);border:1px solid var(--tr-line);border-radius:14px;padding:22px 26px;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
+.tr-trust h3{margin:0 0 6px;color:var(--tr-ink2);font-size:17px}
+.tr-trust__text p{font-size:12.5px;color:var(--tr-muted);margin:0;max-width:300px}
+.tr-trust__chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tr-trust__from{font-size:14px;color:var(--tr-ink2);font-weight:600;text-align:center;margin:0}
+.tr-again{text-align:center;padding-top:26px}
+#trAgainBtn{background:transparent;border:1.5px solid var(--tr-line);border-radius:999px;color:var(--tr-accent);font:inherit;font-size:13px;padding:9px 18px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+#trAgainBtn:hover{border-color:var(--tr-accent)}
+
+@media (max-width:760px){
+  .tr-hero{grid-template-columns:1fr;grid-template-areas:"img" "text";padding:24px 20px;text-align:center}
+  .tr-hero__title{font-size:26px}
+  .tr-hero__tagline{margin:0 auto}
+  .tr-hero__img img{max-height:180px}
+    .tr-strip{grid-template-columns:1fr 1fr;gap:12px 0}
+  .tr-strip__cell:nth-child(2){border-right:0}
+  .tr-step{grid-template-columns:44px 1fr}
+  .tr-step__dot{width:44px;height:44px}
+  .tr-step__num{display:none}
+  .tr-step__body{grid-column:2;grid-row:1;padding-bottom:6px}
+  .tr-step__date{grid-column:2;grid-row:2;justify-self:start;margin:0 0 26px}
+  .tr-trust{grid-template-columns:1fr;text-align:center}
+  .tr-trust__text p{max-width:none}
+  .tr-trust__chips{justify-content:center}
+}
+</style>
+
+<!-- ponytail: demo data inline (works from file:// and inside the Shopify shell). Real build reads metaobjects via Liquid. -->
+<script type="application/json" id="trData">
+{
+ "copy": {
+  "tagline": "Every step of this batch, verified — from herb to your home.",
+  "journey_sub": "Rooted in Ayurveda, verified at every step",
+  "lab_chips": [
+   "Lab Tested",
+   "Heavy Metals Checked",
+   "Microbial Tested",
+   "Quality Assured"
+  ],
+  "trust_title": "100% Transparency",
+  "trust_copy": "We believe in complete honesty. Scan the QR code on the pack to trace your {category}'s journey — from nature to your home.",
+  "trust_chips": [
+   "100% Ayurvedic",
+   "Classical Formulations",
+   "No Harmful Chemicals"
+  ],
+  "trust_from": "From nature's pharmacy to your home."
+ },
+ "batches": {
+  "AVAT241026": {
+   "product": "Ashwagandha Tablets – Stress Relief & Muscle Strength Support",
+   "category": "Ashwagandha",
+   "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_d2362b19-4424-4fd1-ab9e-7f8d4cf46d3c.png?v=1768555623&width=600",
+   "manufacture_date": "2026-10-24",
+   "best_before": "2028-10-23",
+   "quality_check": "passed",
+   "journey": [
+    {
+     "name": "Herb Sourcing",
+     "desc": "Ashwagandha roots sourced from trusted growers",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "Cleaning & Drying",
+     "desc": "Roots washed, sorted and shade dried",
+     "date": "2026-10-21"
+    },
+    {
+     "name": "Extraction & Tableting",
+     "desc": "Extracted and compressed as per Ayurvedic texts",
+     "date": "2026-10-24"
+    },
+    {
+     "name": "Lab Tested",
+     "desc": "Purity, heavy metal & microbial checks passed",
+     "date": "2026-10-27"
+    },
+    {
+     "name": "Warehouse Handover",
+     "desc": "Sealed & dispatched to warehouse",
+     "date": "2026-10-29"
+    }
+   ],
+   "lab_report": {
+    "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+    "tested_on": "2026-10-27"
+   }
+  },
+  "AVTC151026": {
+   "product": "Triphala Churna",
+   "category": "Triphala Churna",
+   "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_3607d0bb-3854-45b0-98c4-90ca58e61e7e.jpg?v=1744978503&width=600",
+   "manufacture_date": "2026-10-15",
+   "best_before": "2027-10-14",
+   "quality_check": "passed",
+   "journey": [
+    {
+     "name": "Fruit Sourcing",
+     "desc": "Amla, haritaki & bibhitaki sourced at peak maturity",
+     "date": "2026-10-09"
+    },
+    {
+     "name": "Sun Drying",
+     "desc": "Naturally sun dried, no artificial heat",
+     "date": "2026-10-12"
+    },
+    {
+     "name": "Stone Grinding & Blending",
+     "desc": "Ground fine and blended in classical ratio",
+     "date": "2026-10-15"
+    },
+    {
+     "name": "Lab Tested",
+     "desc": "Purity & quality checks passed",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "Warehouse Handover",
+     "desc": "Packed & dispatched to warehouse",
+     "date": "2026-10-20"
+    }
+   ],
+   "lab_report": {
+    "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+    "tested_on": "2026-10-18"
+   }
+  },
+  "AVAJ051126": {
+   "product": "Aloe Vera Juice",
+   "category": "Aloe Vera Juice",
+   "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/aloe-vera-juice-488326.jpg?v=1725982348&width=600",
+   "manufacture_date": "2026-11-05",
+   "best_before": "2027-05-04",
+   "quality_check": "passed",
+   "journey": [
+    {
+     "name": "Leaf Harvest",
+     "desc": "Mature aloe vera leaves hand harvested",
+     "date": "2026-11-04"
+    },
+    {
+     "name": "Cold Processing",
+     "desc": "Inner gel extracted within hours of harvest",
+     "date": "2026-11-05"
+    },
+    {
+     "name": "Lab Tested",
+     "desc": "Purity & microbial checks passed",
+     "date": "2026-11-08"
+    },
+    {
+     "name": "Warehouse Handover",
+     "desc": "Bottled & dispatched to warehouse",
+     "date": "2026-11-09"
+    }
+   ],
+   "lab_report": {
+    "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+    "tested_on": "2026-11-08"
+   }
+  },
+  "AVIT300926": {
+   "product": "Immuni Tea",
+   "category": "Immuni Tea",
+   "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/immuni-tea-950291.jpg?v=1732252200&width=600",
+   "manufacture_date": "2026-09-30",
+   "best_before": "2027-09-29",
+   "quality_check": "passed",
+   "journey": [
+    {
+     "name": "Herb Sourcing",
+     "desc": "Tulsi, ginger & giloy sourced from partner farms",
+     "date": "2026-09-24"
+    },
+    {
+     "name": "Shade Drying",
+     "desc": "Slow shade dried to retain natural oils",
+     "date": "2026-09-27"
+    },
+    {
+     "name": "Blending",
+     "desc": "Hand blended in small batches",
+     "date": "2026-09-30"
+    },
+    {
+     "name": "Lab Tested",
+     "desc": "Purity & quality checks passed",
+     "date": "2026-10-03"
+    },
+    {
+     "name": "Warehouse Handover",
+     "desc": "Packed & dispatched to warehouse",
+     "date": "2026-10-04"
+    }
+   ],
+   "lab_report": {
+    "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+    "tested_on": "2026-10-03"
+   }
+  },
+  "AVLS081126": {
+   "product": "Liver Aid Syrup – Ayurvedic Liver Tonic",
+   "category": "Liver Aid Syrup",
+   "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_5471a633-e7c7-4b19-8a5b-a9d774007812.jpg?v=1744366138&width=600",
+   "manufacture_date": "2026-11-08",
+   "best_before": "2028-11-07",
+   "quality_check": "pending",
+   "journey": [
+    {
+     "name": "Herb Sourcing",
+     "desc": "Bhumi amla, kalmegh & punarnava sourced fresh",
+     "date": "2026-11-01"
+    },
+    {
+     "name": "Decoction Brewing",
+     "desc": "Slow brewed as a classical kwath",
+     "date": "2026-11-05"
+    },
+    {
+     "name": "Bottling",
+     "desc": "Filled & sealed in a hygienic facility",
+     "date": "2026-11-08"
+    },
+    {
+     "name": "Lab Tested",
+     "desc": "Purity checks in progress",
+     "date": null
+    },
+    {
+     "name": "Warehouse Handover",
+     "desc": "Dispatch to warehouse",
+     "date": null
+    }
+   ]
+  },
+  "AVSC201026": {
+   "product": "Shilajit Capsules – Boost Stamina & Energy Naturally",
+   "category": "Shilajit",
+   "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_860b30e0-1d6e-4c62-96c1-2f4ba0b18766.png?v=1744366474&width=600",
+   "manufacture_date": "2026-10-20",
+   "best_before": "2028-10-19",
+   "quality_check": "passed",
+   "journey": [
+    {
+     "name": "Resin Sourcing",
+     "desc": "Raw shilajit resin from high-altitude Himalayan rocks",
+     "date": "2026-10-12"
+    },
+    {
+     "name": "Purification (Shodhana)",
+     "desc": "Traditionally purified as per Ayurvedic shodhana",
+     "date": "2026-10-16"
+    },
+    {
+     "name": "Encapsulation",
+     "desc": "Filled into capsules in small batches",
+     "date": "2026-10-20"
+    },
+    {
+     "name": "Lab Tested",
+     "desc": "Purity, heavy metal & microbial checks passed",
+     "date": "2026-10-23"
+    },
+    {
+     "name": "Warehouse Handover",
+     "desc": "Sealed & dispatched to warehouse",
+     "date": "2026-10-24"
+    }
+   ],
+   "lab_report": {
+    "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+    "tested_on": "2026-10-23"
+   }
+  }
+ }
+}
+</script>
+
+<script>
+(() => {
+  const { copy: COPY, batches: DATA } = JSON.parse(document.getElementById('trData').textContent);
+  // ponytail: in-page lookup for the demo; the Shopify build swaps this for a metaobject page check.
+  const getBatch = async (id) => (DATA[id] ? { found: true, batch_no: id, ...DATA[id] } : { found: false });
+
+  const $ = (id) => document.getElementById(id);
+  const chips = (id, list) => $(id).replaceChildren(...(list || []).map((t) => make('span', 'tr-chip', t)));
+  const el = {
+    lookup: $('trLookup'), loading: $('trLoading'), result: $('trResult'),
+    form: $('trForm'), input: $('trInput'), btn: $('trBtn'), btnLabel: $('trBtnLabel'),
+    btnSpin: $('trBtnSpin'), err: $('trFormError'), timeline: $('trTimeline')
+  };
+  const baseTitle = document.title;
+
+  const svg = (paths, size = 24, sw = 1.7) =>
+    `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" aria-hidden="true">${paths}</svg>`;
+  // First regex that matches the step name wins.
+  const ICONS = [
+    [/milk/i, '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>'],
+    [/harvest|grain|seed|fruit|nut|herb|leaf|root|sourc/i, '<path d="M12 22V8M12 8C12 5 10 3 7 3c0 3 2 5 5 5zM12 8c0-3 2-5 5-5 0 3-2 5-5 5zM12 14c0-3-2-5-5-5 0 3 2 5 5 5zM12 14c0-3 2-5 5-5 0 3-2 5-5 5z"/>'],
+    [/clean|sort|prepar|filter|sun|dry|purif/i, '<path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/>'],
+    [/grind|roast/i, '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/>'],
+    [/manufactur|bilona|made|press|pickl|extract|formulat|tablet|capsul|blend|brew|bottl|process/i, '<path d="M12 3c1 3-2 4-2 7a4 4 0 0 0 8 0c0-1-.5-2-1-3 0 4-5 4-5-4zM8 14c-2 1-3 3-3 5h14c0-2-1-4-3-5"/>'],
+    [/lab|test/i, '<path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>'],
+    [/warehouse|dispatch|pack/i, '<path d="M3 21V9l9-6 9 6v12M9 21v-8h6v8"/>']
+  ];
+  const iconFor = (name) => (ICONS.find(([re]) => re.test(name)) || [, '<circle cx="12" cy="12" r="4"/>'])[1];
+  const CAL = svg('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>', 13, 1.8);
+  const CHECK = svg('<circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/>', 16, 2);
+
+  const fmt = (d) => d
+    ? new Date(`${d}T00:00:00`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+    : 'In progress';
+  const make = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+
+  const show = (state) => {
+    el.lookup.hidden = state !== 'lookup';
+    el.loading.hidden = state !== 'loading';
+    el.result.hidden = state !== 'result';
+    if (state === 'lookup') el.input.focus();
+  };
+  const setBusy = (b) => {
+    el.btn.disabled = b; el.btnSpin.hidden = !b;
+    el.btnLabel.textContent = b ? 'Tracing…' : 'Trace My Product';
+  };
+  const formError = (msg) => { el.err.textContent = msg; el.err.hidden = false; };
+
+  function render(d) {
+    const cat = (d.category || d.product || 'product').trim();
+
+    $('trHeroWord').textContent = cat;
+    $('trHeroProduct').textContent = d.product || '';
+    $('trHeroTagline').textContent = COPY.tagline;
+    const imgWrap = $('trHeroImg');
+    imgWrap.replaceChildren();
+    if (d.image) { const img = make('img'); img.src = d.image; img.alt = d.product || cat; imgWrap.append(img); }
+
+    $('trBatchNo').textContent = d.batch_no;
+    $('trMfg').textContent = fmt(d.manufacture_date);
+    $('trBB').textContent = fmt(d.best_before);
+    $('trQC').textContent = d.quality_check === 'passed' ? 'Passed ✓' : 'In progress';
+
+    el.timeline.replaceChildren(...(d.journey || []).map((s, i) => {
+      const li = make('li', 'tr-step' + (s.date ? '' : ' tr-step--pending'));
+      const rail = make('div', 'tr-step__rail');
+      const dot = make('div', 'tr-step__dot'); dot.innerHTML = svg(iconFor(s.name));
+      rail.append(dot, make('div', 'tr-step__line'));
+      const body = make('div', 'tr-step__body');
+      body.append(make('div', 'tr-step__name', s.name));
+      if (s.desc) body.append(make('div', 'tr-step__desc', s.desc));
+      const date = make('span', 'tr-step__date'); date.innerHTML = CAL; date.append(fmt(s.date));
+      li.append(rail, make('div', 'tr-step__num', String(i + 1).padStart(2, '0')), body, date);
+      return li;
+    }));
+
+    const url = d.lab_report && d.lab_report.url;
+    const hasLab = typeof url === 'string' && url.startsWith('https://'); // block javascript:/http: links from data
+    if (hasLab) $('trLabLink').href = url;
+    $('trLab').hidden = !hasLab;
+    $('trLabPending').hidden = hasLab;
+
+    $('trTrustCopy').textContent = COPY.trust_copy.replace(/\{category\}/g, cat.toLowerCase());
+
+    document.title = `Batch ${d.batch_no} · ${baseTitle}`;
+    show('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // top, not the section: themes have sticky headers
+  }
+
+  async function lookup(raw, deepLink) {
+    const batch = (raw || '').replace(/\s+/g, '').toUpperCase();
+    if (!/^[A-Z0-9-]{4,32}$/.test(batch)) {
+      show('lookup'); el.input.value = batch;
+      formError('Please enter a valid batch number (letters and numbers, as printed on the pack).');
+      return;
+    }
+    el.err.hidden = true;
+    deepLink ? show('loading') : setBusy(true);
+    try {
+      const d = await getBatch(batch);
+      if (!d.found) {
+        show('lookup'); el.input.value = batch;
+        formError(`We couldn’t find batch “${batch}”. Please check the code printed near the best-before date on your pack.`);
+        return;
+      }
+      const u = new URL(location.href);
+      u.searchParams.set('batch', batch);
+      history.replaceState(null, '', u);
+      render(d);
+    } catch (e) {
+      console.error('[trace]', e);
+      show('lookup');
+      formError('Something went wrong while fetching the journey. Please try again in a moment.');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  el.form.addEventListener('submit', (e) => { e.preventDefault(); lookup(el.input.value, false); });
+  el.input.addEventListener('input', () => { el.err.hidden = true; });
+  $('trAgainBtn').addEventListener('click', () => {
+    const u = new URL(location.href);
+    u.searchParams.delete('batch');
+    history.replaceState(null, '', u);
+    document.title = baseTitle;
+    el.input.value = '';
+    show('lookup');
+  });
+
+  $('trJourneySub').textContent = COPY.journey_sub;
+  $('trTrustTitle').textContent = COPY.trust_title;
+  $('trTrustFrom').textContent = COPY.trust_from;
+  chips('trLabChips', COPY.lab_chips);
+  chips('trTrustChips', COPY.trust_chips);
+  el.input.placeholder = `e.g. ${Object.keys(DATA)[0] || 'ABC123'}`;
+
+  const initial = new URLSearchParams(location.search).get('batch');
+  initial ? lookup(initial, true) : show('lookup');
+})();
+</script>
+
+<style>.tr{--tr-ink:#2E3B12;--tr-ink2:#4D6020;--tr-accent:#5F7426;--tr-text:#2A3214;--tr-muted:#66704F;--tr-label:#7D8762;--tr-bg:#F4F6EC;--tr-surface:#FBFCF7;--tr-line:#D9E0C2;--tr-rail:#A9B97A;--tr-soft:#E3EAC8;--tr-shadow:46,59,18;--tr-hero:linear-gradient(120deg,#F7F9EF 0%,#EDF2DC 55%,#E1EAC4 100%);--tr-trust-bg:#EEF2E0;--tr-heading:var(---heading-font-family, Montserrat), sans-serif}</style>
+
+</body>
+</html>
