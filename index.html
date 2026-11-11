@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="9b72f9f7-c384-4164-b1f0-ce92a509c07b" data-expiration="1825948728000"><meta name="shopify-s" content="51381022-4d6b-4c94-976b-be83269f8160" data-expiration="1794392928000"><meta name="request-id" content="d626733f-38cd-4246-ad53-2d1cf00f9cc5-1794391128"        >
+<meta name="shopify-y" content="fcaa9c66-2fe0-4ee8-a90f-f4232c73f7a6" data-expiration="1825948898000"><meta name="shopify-s" content="09fc08a6-8378-43cd-8fb4-45fb4ec2a8b1" data-expiration="1794393098000"><meta name="request-id" content="690d55c7-5dc3-4e5f-b04f-3003cfa7a54d-1794391298"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1373,12 +1373,12 @@ ease;
     </article>
 
     <section class="av-block">
-      <header class="av-head"><h2>What's inside this batch</h2><p>Key herbs and where they came from</p></header>
+      <header class="av-head"><h2>What's inside this batch</h2><p>Key ingredients and where they came from</p></header>
       <ul class="av-herbs" id="avHerbs"></ul>
     </section>
 
     <section class="av-block">
-      <header class="av-head"><h2>From herb to home</h2><p id="avPathSub"></p></header>
+      <header class="av-head"><h2 id="avPathTitle">From herb to home</h2><p id="avPathSub"></p></header>
       <ol class="av-path" id="avPath"></ol>
     </section>
 
@@ -1566,119 +1566,418 @@ ease;
 <!-- ponytail: sample data inline for the preview; production renders the batch metaobject with Liquid. -->
 <script type="application/json" id="avData">
 {
+  "AVGH041126": {
+    "product": "A2 Desi Cow Ghee – Bilona Method",
+    "category": "A2 Ghee",
+    "origin_word": "farm",
+    "manufacture_date": "2026-11-04",
+    "best_before": "2027-08-03",
+    "quality_check": "passed",
+    "herbs": [
+      {
+        "name": "Gir Cow Milk",
+        "botanical": "A2 milk from native Gir cows",
+        "part": "Cultured curd (dahi)",
+        "region": "Gujarat"
+      }
+    ],
+    "journey": [
+      {
+        "name": "Milk Collection",
+        "desc": "Fresh A2 milk collected at dawn",
+        "date": "2026-11-03"
+      },
+      {
+        "name": "Curd Setting",
+        "desc": "Milk boiled and set into curd overnight",
+        "date": "2026-11-03"
+      },
+      {
+        "name": "Bilona Churning",
+        "desc": "Curd hand-churned to separate makkhan",
+        "date": "2026-11-04"
+      },
+      {
+        "name": "Slow Clarifying",
+        "desc": "Makkhan slow heated on a low flame",
+        "date": "2026-11-04"
+      },
+      {
+        "name": "Lab Tested",
+        "desc": "Purity & quality checks passed",
+        "date": "2026-11-07"
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Jarred & dispatched",
+        "date": "2026-11-08"
+      }
+    ],
+    "lab": {
+      "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+      "tested_on": "2026-11-07",
+      "results": [
+        {
+          "test": "Adulteration",
+          "detail": "Vegetable oils, vanaspati, animal body fat",
+          "result": "Not detected"
+        },
+        {
+          "test": "Moisture content",
+          "detail": "Water left after clarifying",
+          "result": "Within limits"
+        },
+        {
+          "test": "Free fatty acids",
+          "detail": "Freshness and rancidity marker",
+          "result": "Within limits"
+        },
+        {
+          "test": "Microbial load",
+          "detail": "Total plate count, yeast & mould, pathogens",
+          "result": "Pass"
+        }
+      ]
+    }
+  },
   "AVAT241026": {
     "product": "Ashwagandha Tablets – Stress Relief & Muscle Strength Support",
     "category": "Ashwagandha",
     "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_d2362b19-4424-4fd1-ab9e-7f8d4cf46d3c.png?v=1768555623&width=600",
     "product_url": "https://ayurvedant.com/products/ashwagandha-tablet",
-    "manufacture_date": "2026-10-24", "best_before": "2028-10-23", "quality_check": "passed",
+    "manufacture_date": "2026-10-24",
+    "best_before": "2028-10-23",
+    "quality_check": "passed",
     "herbs": [
-      { "name": "Ashwagandha", "botanical": "Withania somnifera", "part": "Root", "region": "Madhya Pradesh" }
+      {
+        "name": "Ashwagandha",
+        "botanical": "Withania somnifera",
+        "part": "Root",
+        "region": "Madhya Pradesh"
+      }
     ],
     "journey": [
-      { "name": "Herb Sourcing", "desc": "Roots sourced from trusted growers", "date": "2026-10-18" },
-      { "name": "Cleaning & Drying", "desc": "Washed, sorted and shade dried", "date": "2026-10-21" },
-      { "name": "Extraction & Tableting", "desc": "Extracted and compressed in small batches", "date": "2026-10-24" },
-      { "name": "Lab Tested", "desc": "Purity & safety checks passed", "date": "2026-10-27" },
-      { "name": "Warehouse Handover", "desc": "Sealed & dispatched", "date": "2026-10-29" }
+      {
+        "name": "Herb Sourcing",
+        "desc": "Roots sourced from trusted growers",
+        "date": "2026-10-18"
+      },
+      {
+        "name": "Cleaning & Drying",
+        "desc": "Washed, sorted and shade dried",
+        "date": "2026-10-21"
+      },
+      {
+        "name": "Extraction & Tableting",
+        "desc": "Extracted and compressed in small batches",
+        "date": "2026-10-24"
+      },
+      {
+        "name": "Lab Tested",
+        "desc": "Purity & safety checks passed",
+        "date": "2026-10-27"
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Sealed & dispatched",
+        "date": "2026-10-29"
+      }
     ],
-    "lab": { "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing", "tested_on": "2026-10-27",
+    "lab": {
+      "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+      "tested_on": "2026-10-27",
       "results": [
-        { "test": "Heavy metals", "detail": "Lead, arsenic, mercury, cadmium", "result": "Within limits" },
-        { "test": "Microbial load", "detail": "Total plate count, yeast & mould, pathogens", "result": "Pass" },
-        { "test": "Aflatoxins", "detail": "B1, B2, G1, G2", "result": "Not detected" },
-        { "test": "Pesticide residue", "detail": "Organochlorine & organophosphate screen", "result": "Not detected" }
-      ] }
+        {
+          "test": "Heavy metals",
+          "detail": "Lead, arsenic, mercury, cadmium",
+          "result": "Within limits"
+        },
+        {
+          "test": "Microbial load",
+          "detail": "Total plate count, yeast & mould, pathogens",
+          "result": "Pass"
+        },
+        {
+          "test": "Aflatoxins",
+          "detail": "B1, B2, G1, G2",
+          "result": "Not detected"
+        },
+        {
+          "test": "Pesticide residue",
+          "detail": "Organochlorine & organophosphate screen",
+          "result": "Not detected"
+        }
+      ]
+    }
   },
   "AVTC151026": {
     "product": "Triphala Churna",
     "category": "Triphala Churna",
     "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_3607d0bb-3854-45b0-98c4-90ca58e61e7e.jpg?v=1744978503&width=600",
     "product_url": "https://ayurvedant.com/products/triphala-churna",
-    "manufacture_date": "2026-10-15", "best_before": "2027-10-14", "quality_check": "passed",
+    "manufacture_date": "2026-10-15",
+    "best_before": "2027-10-14",
+    "quality_check": "passed",
     "herbs": [
-      { "name": "Amla", "botanical": "Emblica officinalis", "part": "Fruit", "region": "Uttar Pradesh" },
-      { "name": "Haritaki", "botanical": "Terminalia chebula", "part": "Fruit", "region": "Madhya Pradesh" },
-      { "name": "Bibhitaki", "botanical": "Terminalia bellirica", "part": "Fruit", "region": "Jharkhand" }
+      {
+        "name": "Amla",
+        "botanical": "Emblica officinalis",
+        "part": "Fruit",
+        "region": "Uttar Pradesh"
+      },
+      {
+        "name": "Haritaki",
+        "botanical": "Terminalia chebula",
+        "part": "Fruit",
+        "region": "Madhya Pradesh"
+      },
+      {
+        "name": "Bibhitaki",
+        "botanical": "Terminalia bellirica",
+        "part": "Fruit",
+        "region": "Jharkhand"
+      }
     ],
     "journey": [
-      { "name": "Fruit Sourcing", "desc": "All three fruits sourced at peak maturity", "date": "2026-10-09" },
-      { "name": "Sun Drying", "desc": "Naturally sun dried, no artificial heat", "date": "2026-10-12" },
-      { "name": "Grinding & Blending", "desc": "Ground fine and blended in classical ratio", "date": "2026-10-15" },
-      { "name": "Lab Tested", "desc": "Purity & safety checks passed", "date": "2026-10-18" },
-      { "name": "Warehouse Handover", "desc": "Packed & dispatched", "date": "2026-10-20" }
+      {
+        "name": "Fruit Sourcing",
+        "desc": "All three fruits sourced at peak maturity",
+        "date": "2026-10-09"
+      },
+      {
+        "name": "Sun Drying",
+        "desc": "Naturally sun dried, no artificial heat",
+        "date": "2026-10-12"
+      },
+      {
+        "name": "Grinding & Blending",
+        "desc": "Ground fine and blended in classical ratio",
+        "date": "2026-10-15"
+      },
+      {
+        "name": "Lab Tested",
+        "desc": "Purity & safety checks passed",
+        "date": "2026-10-18"
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Packed & dispatched",
+        "date": "2026-10-20"
+      }
     ],
-    "lab": { "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing", "tested_on": "2026-10-18",
+    "lab": {
+      "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+      "tested_on": "2026-10-18",
       "results": [
-        { "test": "Heavy metals", "detail": "Lead, arsenic, mercury, cadmium", "result": "Within limits" },
-        { "test": "Microbial load", "detail": "Total plate count, yeast & mould, pathogens", "result": "Pass" },
-        { "test": "Identity & purity", "detail": "Herb identity and foreign matter", "result": "Pass" }
-      ] }
+        {
+          "test": "Heavy metals",
+          "detail": "Lead, arsenic, mercury, cadmium",
+          "result": "Within limits"
+        },
+        {
+          "test": "Microbial load",
+          "detail": "Total plate count, yeast & mould, pathogens",
+          "result": "Pass"
+        },
+        {
+          "test": "Identity & purity",
+          "detail": "Herb identity and foreign matter",
+          "result": "Pass"
+        }
+      ]
+    }
   },
   "AVAJ051126": {
     "product": "Aloe Vera Juice",
     "category": "Aloe Vera Juice",
     "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/aloe-vera-juice-488326.jpg?v=1725982348&width=600",
     "product_url": "https://ayurvedant.com/products/ayurvedant-aloe-vera-ready-to-drink-juice-1-ltr",
-    "manufacture_date": "2026-11-05", "best_before": "2027-05-04", "quality_check": "passed",
+    "manufacture_date": "2026-11-05",
+    "best_before": "2027-05-04",
+    "quality_check": "passed",
     "herbs": [
-      { "name": "Aloe Vera", "botanical": "Aloe barbadensis Miller", "part": "Inner leaf gel", "region": "Rajasthan" }
+      {
+        "name": "Aloe Vera",
+        "botanical": "Aloe barbadensis Miller",
+        "part": "Inner leaf gel",
+        "region": "Rajasthan"
+      }
     ],
     "journey": [
-      { "name": "Leaf Harvest", "desc": "Mature leaves hand harvested", "date": "2026-11-04" },
-      { "name": "Cold Processing", "desc": "Inner gel extracted within hours of harvest", "date": "2026-11-05" },
-      { "name": "Lab Tested", "desc": "Purity & microbial checks passed", "date": "2026-11-08" },
-      { "name": "Warehouse Handover", "desc": "Bottled & dispatched", "date": "2026-11-09" }
+      {
+        "name": "Leaf Harvest",
+        "desc": "Mature leaves hand harvested",
+        "date": "2026-11-04"
+      },
+      {
+        "name": "Cold Processing",
+        "desc": "Inner gel extracted within hours of harvest",
+        "date": "2026-11-05"
+      },
+      {
+        "name": "Lab Tested",
+        "desc": "Purity & microbial checks passed",
+        "date": "2026-11-08"
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Bottled & dispatched",
+        "date": "2026-11-09"
+      }
     ],
-    "lab": { "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing", "tested_on": "2026-11-08",
+    "lab": {
+      "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+      "tested_on": "2026-11-08",
       "results": [
-        { "test": "Microbial load", "detail": "Total plate count, yeast & mould, pathogens", "result": "Pass" },
-        { "test": "Heavy metals", "detail": "Lead, arsenic, mercury, cadmium", "result": "Within limits" },
-        { "test": "Identity & purity", "detail": "Aloe content and foreign matter", "result": "Pass" }
-      ] }
+        {
+          "test": "Microbial load",
+          "detail": "Total plate count, yeast & mould, pathogens",
+          "result": "Pass"
+        },
+        {
+          "test": "Heavy metals",
+          "detail": "Lead, arsenic, mercury, cadmium",
+          "result": "Within limits"
+        },
+        {
+          "test": "Identity & purity",
+          "detail": "Aloe content and foreign matter",
+          "result": "Pass"
+        }
+      ]
+    }
   },
   "AVIT300926": {
     "product": "Immuni Tea",
     "category": "Immuni Tea",
     "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/immuni-tea-950291.jpg?v=1732252200&width=600",
     "product_url": "https://ayurvedant.com/products/immuni-tea",
-    "manufacture_date": "2026-09-30", "best_before": "2027-09-29", "quality_check": "passed",
+    "manufacture_date": "2026-09-30",
+    "best_before": "2027-09-29",
+    "quality_check": "passed",
     "herbs": [
-      { "name": "Tulsi", "botanical": "Ocimum sanctum", "part": "Leaf", "region": "Uttar Pradesh" },
-      { "name": "Ginger", "botanical": "Zingiber officinale", "part": "Rhizome", "region": "Kerala" },
-      { "name": "Giloy", "botanical": "Tinospora cordifolia", "part": "Stem", "region": "Madhya Pradesh" }
+      {
+        "name": "Tulsi",
+        "botanical": "Ocimum sanctum",
+        "part": "Leaf",
+        "region": "Uttar Pradesh"
+      },
+      {
+        "name": "Ginger",
+        "botanical": "Zingiber officinale",
+        "part": "Rhizome",
+        "region": "Kerala"
+      },
+      {
+        "name": "Giloy",
+        "botanical": "Tinospora cordifolia",
+        "part": "Stem",
+        "region": "Madhya Pradesh"
+      }
     ],
     "journey": [
-      { "name": "Herb Sourcing", "desc": "Sourced from partner farms", "date": "2026-09-24" },
-      { "name": "Shade Drying", "desc": "Slow dried to keep natural oils", "date": "2026-09-27" },
-      { "name": "Blending", "desc": "Hand blended in small batches", "date": "2026-09-30" },
-      { "name": "Lab Tested", "desc": "Purity & safety checks passed", "date": "2026-10-03" },
-      { "name": "Warehouse Handover", "desc": "Packed & dispatched", "date": "2026-10-04" }
+      {
+        "name": "Herb Sourcing",
+        "desc": "Sourced from partner farms",
+        "date": "2026-09-24"
+      },
+      {
+        "name": "Shade Drying",
+        "desc": "Slow dried to keep natural oils",
+        "date": "2026-09-27"
+      },
+      {
+        "name": "Blending",
+        "desc": "Hand blended in small batches",
+        "date": "2026-09-30"
+      },
+      {
+        "name": "Lab Tested",
+        "desc": "Purity & safety checks passed",
+        "date": "2026-10-03"
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Packed & dispatched",
+        "date": "2026-10-04"
+      }
     ],
-    "lab": { "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing", "tested_on": "2026-10-03",
+    "lab": {
+      "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+      "tested_on": "2026-10-03",
       "results": [
-        { "test": "Pesticide residue", "detail": "Organochlorine & organophosphate screen", "result": "Not detected" },
-        { "test": "Heavy metals", "detail": "Lead, arsenic, mercury, cadmium", "result": "Within limits" },
-        { "test": "Microbial load", "detail": "Total plate count, yeast & mould, pathogens", "result": "Pass" }
-      ] }
+        {
+          "test": "Pesticide residue",
+          "detail": "Organochlorine & organophosphate screen",
+          "result": "Not detected"
+        },
+        {
+          "test": "Heavy metals",
+          "detail": "Lead, arsenic, mercury, cadmium",
+          "result": "Within limits"
+        },
+        {
+          "test": "Microbial load",
+          "detail": "Total plate count, yeast & mould, pathogens",
+          "result": "Pass"
+        }
+      ]
+    }
   },
   "AVLS081126": {
     "product": "Liver Aid Syrup – Ayurvedic Liver Tonic",
     "category": "Liver Aid Syrup",
     "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_5471a633-e7c7-4b19-8a5b-a9d774007812.jpg?v=1744366138&width=600",
     "product_url": "https://ayurvedant.com/products/livwin-syrup-liver-detox-tonic",
-    "manufacture_date": "2026-11-08", "best_before": "2028-11-07", "quality_check": "pending",
+    "manufacture_date": "2026-11-08",
+    "best_before": "2028-11-07",
+    "quality_check": "pending",
     "herbs": [
-      { "name": "Bhumi Amla", "botanical": "Phyllanthus niruri", "part": "Whole plant", "region": "Karnataka" },
-      { "name": "Kalmegh", "botanical": "Andrographis paniculata", "part": "Whole plant", "region": "Odisha" },
-      { "name": "Punarnava", "botanical": "Boerhavia diffusa", "part": "Root", "region": "Rajasthan" }
+      {
+        "name": "Bhumi Amla",
+        "botanical": "Phyllanthus niruri",
+        "part": "Whole plant",
+        "region": "Karnataka"
+      },
+      {
+        "name": "Kalmegh",
+        "botanical": "Andrographis paniculata",
+        "part": "Whole plant",
+        "region": "Odisha"
+      },
+      {
+        "name": "Punarnava",
+        "botanical": "Boerhavia diffusa",
+        "part": "Root",
+        "region": "Rajasthan"
+      }
     ],
     "journey": [
-      { "name": "Herb Sourcing", "desc": "Herbs sourced fresh", "date": "2026-11-01" },
-      { "name": "Decoction Brewing", "desc": "Slow brewed as a classical kwath", "date": "2026-11-05" },
-      { "name": "Bottling", "desc": "Filled & sealed hygienically", "date": "2026-11-08" },
-      { "name": "Lab Testing", "desc": "Purity checks in progress", "date": null },
-      { "name": "Warehouse Handover", "desc": "Dispatch to warehouse", "date": null }
+      {
+        "name": "Herb Sourcing",
+        "desc": "Herbs sourced fresh",
+        "date": "2026-11-01"
+      },
+      {
+        "name": "Decoction Brewing",
+        "desc": "Slow brewed as a classical kwath",
+        "date": "2026-11-05"
+      },
+      {
+        "name": "Bottling",
+        "desc": "Filled & sealed hygienically",
+        "date": "2026-11-08"
+      },
+      {
+        "name": "Lab Testing",
+        "desc": "Purity checks in progress",
+        "date": null
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Dispatch to warehouse",
+        "date": null
+      }
     ],
     "lab": null
   },
@@ -1687,23 +1986,65 @@ ease;
     "category": "Shilajit",
     "image": "https://cdn.shopify.com/s/files/1/0557/3446/8642/files/1_860b30e0-1d6e-4c62-96c1-2f4ba0b18766.png?v=1744366474&width=600",
     "product_url": "https://ayurvedant.com/products/shilajit-capsul",
-    "manufacture_date": "2026-10-20", "best_before": "2028-10-19", "quality_check": "passed",
+    "manufacture_date": "2026-10-20",
+    "best_before": "2028-10-19",
+    "quality_check": "passed",
     "herbs": [
-      { "name": "Shilajit", "botanical": "Asphaltum punjabianum", "part": "Purified resin", "region": "Himachal Pradesh" }
+      {
+        "name": "Shilajit",
+        "botanical": "Asphaltum punjabianum",
+        "part": "Purified resin",
+        "region": "Himachal Pradesh"
+      }
     ],
     "journey": [
-      { "name": "Resin Sourcing", "desc": "Raw resin from high-altitude Himalayan rocks", "date": "2026-10-12" },
-      { "name": "Purification (Shodhana)", "desc": "Traditionally purified as per Ayurveda", "date": "2026-10-16" },
-      { "name": "Encapsulation", "desc": "Filled into capsules in small batches", "date": "2026-10-20" },
-      { "name": "Lab Tested", "desc": "Purity & safety checks passed", "date": "2026-10-23" },
-      { "name": "Warehouse Handover", "desc": "Sealed & dispatched", "date": "2026-10-24" }
+      {
+        "name": "Resin Sourcing",
+        "desc": "Raw resin from high-altitude Himalayan rocks",
+        "date": "2026-10-12"
+      },
+      {
+        "name": "Purification (Shodhana)",
+        "desc": "Traditionally purified as per Ayurveda",
+        "date": "2026-10-16"
+      },
+      {
+        "name": "Encapsulation",
+        "desc": "Filled into capsules in small batches",
+        "date": "2026-10-20"
+      },
+      {
+        "name": "Lab Tested",
+        "desc": "Purity & safety checks passed",
+        "date": "2026-10-23"
+      },
+      {
+        "name": "Warehouse Handover",
+        "desc": "Sealed & dispatched",
+        "date": "2026-10-24"
+      }
     ],
-    "lab": { "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing", "tested_on": "2026-10-23",
+    "lab": {
+      "url": "https://drive.google.com/file/d/1ZcUhg2w4edCXZRRjUCz6QNb9Y37Ur5Lh/view?usp=sharing",
+      "tested_on": "2026-10-23",
       "results": [
-        { "test": "Heavy metals", "detail": "Lead, arsenic, mercury, cadmium", "result": "Within limits" },
-        { "test": "Microbial load", "detail": "Total plate count, yeast & mould, pathogens", "result": "Pass" },
-        { "test": "Identity & purity", "detail": "Resin identity and foreign matter", "result": "Pass" }
-      ] }
+        {
+          "test": "Heavy metals",
+          "detail": "Lead, arsenic, mercury, cadmium",
+          "result": "Within limits"
+        },
+        {
+          "test": "Microbial load",
+          "detail": "Total plate count, yeast & mould, pathogens",
+          "result": "Pass"
+        },
+        {
+          "test": "Identity & purity",
+          "detail": "Resin identity and foreign matter",
+          "result": "Pass"
+        }
+      ]
+    }
   }
 }
 </script>
@@ -1727,13 +2068,19 @@ ease;
   const LEAF = '<path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19 14 10"/>';
   // First regex that matches the step name wins.
   const ICONS = [
+    [/milk/i, '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>'],
     [/harvest|herb|leaf|fruit|root|resin|sourc/i, LEAF],
-    [/clean|dry|purif|shodhana/i, '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/>'],
-    [/grind|blend|extract|tablet|capsul|brew|decoction|bottl|process|formulat/i, '<path d="M6 10h12l-1.5 9a2 2 0 0 1-2 1.7h-5a2 2 0 0 1-2-1.7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>'],
+    [/clean|dry|purif|shodhana|heat|clarif/i, '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/>'],
+    [/grind|blend|extract|tablet|capsul|brew|decoction|bottl|process|formulat|churn|bilona|curd/i, '<path d="M6 10h12l-1.5 9a2 2 0 0 1-2 1.7h-5a2 2 0 0 1-2-1.7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>'],
     [/lab|test/i, '<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/>'],
     [/warehouse|dispatch|pack/i, '<path d="M3 8l9-5 9 5v10l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v10"/>']
   ];
   const iconFor = (name) => (ICONS.find(([re]) => re.test(name)) || [, '<circle cx="12" cy="12" r="4"/>'])[1];
+  const JAR = `<svg viewBox="0 0 160 180" width="70%" role="img" aria-label="Product jar">
+    <rect x="38" y="18" width="84" height="24" rx="5" fill="#4F6120"/><rect x="44" y="40" width="72" height="10" fill="#E3EAC8"/>
+    <rect x="26" y="48" width="108" height="118" rx="18" fill="#F2D27A" stroke="#D9B85C" stroke-width="2"/>
+    <rect x="26" y="78" width="108" height="56" fill="#fff"/><circle cx="80" cy="98" r="11" fill="none" stroke="#677C2A" stroke-width="1.5"/>
+    <path d="M74 101c3-7 9-9 13-8-1 5-5 10-13 8z" fill="#677C2A"/><rect x="58" y="116" width="44" height="4" rx="2" fill="#B9C39A"/></svg>`;
   const TICK = svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 14, 2.4);
 
   const toDate = (d) => new Date(`${d}T00:00:00`);
@@ -1774,11 +2121,12 @@ ease;
     const complete = steps.length > 0 && dated.length === steps.length;
     const totalDays = complete ? dayOf(steps[steps.length - 1]) : null;
     const passed = d.quality_check === 'passed';
+    const origin = d.origin_word || 'herb'; // e.g. "farm" for ghee
 
     // certificate
     $('avCat').textContent = d.category || 'product';
     $('avLine').textContent = complete
-      ? `Batch ${d.batch_no} · from herb to home in ${totalDays} days`
+      ? `Batch ${d.batch_no} · from ${origin} to home in ${totalDays} days`
       : `Batch ${d.batch_no} · journey in progress`;
     $('avProduct').textContent = d.product && d.product !== d.category ? d.product : '';
     $('avBatch').textContent = d.batch_no;
@@ -1788,6 +2136,7 @@ ease;
     const imgWrap = $('avImg');
     imgWrap.replaceChildren();
     if (safeUrl(d.image)) { const img = make('img'); img.src = d.image; img.alt = d.product || ''; imgWrap.append(img); }
+    else imgWrap.innerHTML = JAR; // static markup: placeholder until the product has a photo
     const sealEl = $('avSeal');
     sealEl.className = 'av-seal' + (passed ? '' : ' av-seal--pending');
     sealEl.innerHTML = seal(passed); // static markup only
@@ -1795,16 +2144,17 @@ ease;
     // herbs
     $('avHerbs').replaceChildren(...(d.herbs || []).map((h) => {
       const li = make('li', 'av-herb');
-      const icon = make('div', 'av-herb__icon'); icon.innerHTML = svg(LEAF, 22);
+      const icon = make('div', 'av-herb__icon'); icon.innerHTML = svg(/milk/i.test(h.name) ? iconFor(h.name) : LEAF, 22);
       const head = make('div');
       head.append(make('h3', null, h.name), make('p', 'av-herb__bot', h.botanical));
       const dl = make('dl');
-      [['Part used', h.part], ['Sourced from', h.region]].forEach(([k, v]) => { if (v) dl.append(make('dt', null, k), make('dd', null, v)); });
+      [['Form', h.part], ['Sourced from', h.region]].forEach(([k, v]) => { if (v) dl.append(make('dt', null, k), make('dd', null, v)); });
       li.append(icon, head, dl);
       return li;
     }));
 
     // path
+    $('avPathTitle').textContent = `From ${origin} to home`;
     $('avPathSub').textContent = complete
       ? `${totalDays} days, ${steps.length} steps, every one recorded`
       : `${dated.length} of ${steps.length} steps complete`;
