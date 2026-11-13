@@ -477,8 +477,6 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 <!-- BEGIN app block: shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed -->
 
 
-<!-- END app block --><!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
-
 <!-- END app block --><!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
 
 
@@ -547,6 +545,8 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 
 
+<!-- END app block --><!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
+
 <!-- END app block -->
 
 
@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="261e31d2-6920-4698-bccd-08aa34be9d0d" data-expiration="1826126847000"><meta name="shopify-s" content="43ed00b2-8b69-44ae-a51f-5873a0b622c9" data-expiration="1794571047000"><meta name="request-id" content="f8dca9cf-08e6-42f6-9b79-749e686d34cf-1794569246"        >
+<meta name="shopify-y" content="9af36f59-2847-4426-aea2-09192e9a42a8" data-expiration="1826126980000"><meta name="shopify-s" content="5028fc83-0d93-4ba4-9a44-a9c341e3b4e8" data-expiration="1794571180000"><meta name="request-id" content="d1082e78-27f8-415f-bf5f-ec88e7f6708c-1794569380"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1496,8 +1496,7 @@ ease;
 .av-step__day{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--av-olive);background:var(--av-soft);border-radius:999px;padding:2px 10px}
 .av-step--pending .av-step__day{color:var(--av-muted);background:#F1F2EC}
 .av-step h3{font-size:15px;font-weight:600;margin-top:8px}
-.av-step__date{font-size:13px;font-weight:500;color:var(--av-olive);margin-top:2px}
-.av-step--pending .av-step__date{color:var(--av-muted)}
+.av-step__date{font-size:13px;font-weight:500;color:var(--av-muted);margin-top:2px}
 .av-step__desc{font-size:13px;color:var(--av-muted);margin-top:4px}
 
 /* lab */
@@ -2141,8 +2140,8 @@ ease;
       const next = steps[i + 1];
       const li = make('li', 'av-step' + (s.date ? '' : ' av-step--pending') + (next && !next.date ? ' av-step--to-pending' : ''));
       const node = make('div', 'av-step__node'); node.innerHTML = svg(iconFor(s.name));
-      li.append(node, make('span', 'av-step__day', `Step ${i + 1}`), make('h3', null, s.name),
-        make('p', 'av-step__date', fmt(s.date)));
+      li.append(node, make('span', 'av-step__day', `Step ${i + 1}`), make('h3', null, s.name));
+      if (!s.date) li.append(make('p', 'av-step__date', 'Pending')); // status, not a date
       if (s.desc) li.append(make('p', 'av-step__desc', s.desc));
       return li;
     }));
@@ -2926,7 +2925,7 @@ ease;
 
 <!-- End Google Tag Manager (noscript) -->
 <style> .jdgm-histogram__frequency {display: none;} </style>
-<!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist --><div id="shopify-block-AeXdFL3NiTloxRjRUY__14952540001915115444" class="shopify-block shopify-app-block">
+<div id="shopify-block-AeXdFL3NiTloxRjRUY__14952540001915115444" class="shopify-block shopify-app-block">
 
 
 
@@ -2997,7 +2996,7 @@ ease;
 
 
 
-</div>
+</div><!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist -->
 </body>
 </html>
 
