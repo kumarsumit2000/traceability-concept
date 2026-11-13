@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="7ec750d0-3500-4566-8c67-249459aa02ab" data-expiration="1826127504000"><meta name="shopify-s" content="d057be20-e053-4edf-a813-ba999424fc6e" data-expiration="1794571704000"><meta name="request-id" content="df17238c-1f0a-461f-b7f2-ec0edbb9ccc2-1794569904"        >
+<meta name="shopify-y" content="224540a4-c6e4-46b6-9d47-5123de34a355" data-expiration="1826130200000"><meta name="shopify-s" content="0ef775c4-fa2a-443f-b544-5d3b5ff18265" data-expiration="1794574400000"><meta name="request-id" content="8711ef20-b6cc-4422-9235-cac9d390386a-1794572600"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1467,6 +1467,9 @@ ease;
 .av-cert__product{margin-top:6px;color:var(--av-muted);font-size:16px}
 .av-seal{position:absolute;top:26px;right:28px;width:112px;height:112px;color:var(--av-btn);transform:rotate(-10deg)}
 .av-seal--pending{color:var(--av-pend)}
+.av-seal--img{width:190px;height:auto;top:18px;right:20px;transform:none}
+.av-seal--img img{display:block;width:100%;height:auto}
+.av-cert:has(.av-seal--img) .av-cert__body{padding-right:200px}
 
 /* blocks */
 .av-block{margin-top:48px}
@@ -1528,6 +1531,8 @@ ease;
   .av-cert__media{max-width:240px;margin:0 auto;width:100%}
   .av-cert__body{padding-right:0}
   .av-seal{width:84px;height:84px;top:18px;right:18px}
+  .av-seal--img{width:120px;height:auto;top:12px;right:12px}
+  .av-cert:has(.av-seal--img) .av-cert__body{padding-right:0}
   .av-h1{font-size:27px}
   .av-path{grid-auto-flow:row}
   .av-step{text-align:left;padding:0 0 26px 74px;min-height:84px}
@@ -1558,6 +1563,7 @@ ease;
   "subtitle": "Made using Bilona Method",
   "origin_word": "farm",
   "image": "https://i.ibb.co/Mx1ydXJL/A2-Gir-Cow-Ghee-final-png-1.png",
+  "seal_image": "https://kumarsumit2000.github.io/traceability-concept/assets/ghee-certified.png",
   "manufacture_date": "2026-11-04",
   "best_before": "2027-08-03",
   "quality_check": "passed",
@@ -1703,8 +1709,11 @@ ease;
     if (safeUrl(d.image)) { const img = make('img'); img.src = d.image; img.alt = d.product || ''; imgWrap.append(img); }
     else imgWrap.innerHTML = JAR; // static markup: placeholder until the product has a photo
     const sealEl = $('avSeal');
-    sealEl.className = 'av-seal' + (passed ? '' : ' av-seal--pending');
-    sealEl.innerHTML = seal(passed); // static markup only
+    const sealImg = passed && safeUrl(d.seal_image); // product's own certification badge, shown once QC passes
+    sealEl.className = 'av-seal' + (sealImg ? ' av-seal--img' : passed ? '' : ' av-seal--pending');
+    sealEl.replaceChildren();
+    if (sealImg) { const img = make('img'); img.src = sealImg; img.alt = ''; sealEl.append(img); }
+    else sealEl.innerHTML = seal(passed); // static markup only
 
     // herbs
     $('avHerbs').replaceChildren(...(d.herbs || []).map((h) => {
