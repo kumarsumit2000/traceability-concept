@@ -474,7 +474,39 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 <!-- End Google Tag Manager -->
   
-<!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
+<!-- BEGIN app block: shopify://apps/gsc-countdown-timer/blocks/countdown-bar/58dc5b1b-43d2-4209-b1f3-52aff31643ed --><style>
+  .gta-block__error {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 12px;
+    padding: 32px;
+    border-radius: 12px;
+    margin: 12px 0;
+    background-color: #fff1e3;
+    color: #412d00;
+  }
+
+  .gta-block__error-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+
+  .gta-block__error-body {
+    font-size: 14px;
+    line-height: 24px;
+  }
+</style>
+
+
+
+
+<!-- END app block --><!-- BEGIN app block: shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed -->
+
+
+<!-- END app block --><!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
+
+<!-- END app block --><!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
 
 
 
@@ -515,38 +547,6 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 
 
-<!-- END app block --><!-- BEGIN app block: shopify://apps/gsc-countdown-timer/blocks/countdown-bar/58dc5b1b-43d2-4209-b1f3-52aff31643ed --><style>
-  .gta-block__error {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 12px;
-    padding: 32px;
-    border-radius: 12px;
-    margin: 12px 0;
-    background-color: #fff1e3;
-    color: #412d00;
-  }
-
-  .gta-block__error-title {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 28px;
-  }
-
-  .gta-block__error-body {
-    font-size: 14px;
-    line-height: 24px;
-  }
-</style>
-
-
-
-
-<!-- END app block --><!-- BEGIN app block: shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed -->
-
-
-<!-- END app block --><!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
-
 <!-- END app block -->
 
 
@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="aa735527-a7d2-414a-9c94-18008d36b86c" data-expiration="1826127080000"><meta name="shopify-s" content="002ea2ff-c2a0-4794-82f1-dcfc77b3f8a3" data-expiration="1794571280000"><meta name="request-id" content="41bb81b4-fc02-4d46-9cc0-6597b50e50df-1794569480"        >
+<meta name="shopify-y" content="836f1449-5886-4141-b377-35be113e19f2" data-expiration="1826127203000"><meta name="shopify-s" content="2ae8e76e-4843-443f-a860-255fa47b07bd" data-expiration="1794571403000"><meta name="request-id" content="332c8222-c148-4ac4-baf9-211328b8a391-1794569603"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1371,7 +1371,7 @@ ease;
     </section>
 
     <section class="av-block">
-      <header class="av-head"><h2 id="avPathTitle">From herb to home</h2><p id="avPathSub"></p></header>
+      <header class="av-head"><h2 id="avPathTitle">From herb to home</h2></header>
       <ol class="av-path" id="avPath"></ol>
     </section>
 
@@ -2046,7 +2046,6 @@ ease;
     btn: $('avBtn'), btnLabel: $('avBtnLabel'), btnSpin: $('avBtnSpin'), err: $('avError')
   };
   const baseTitle = document.title;
-  const DAY = 864e5;
 
   const svg = (paths, size = 24, sw = 1.5) =>
     `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
@@ -2100,11 +2099,6 @@ ease;
 
   function render(d) {
     const steps = d.journey || [];
-    const dated = steps.filter((s) => s.date);
-    const start = dated.length ? toDate(dated[0].date) : null;
-    const dayOf = (s) => (s.date && start ? Math.round((toDate(s.date) - start) / DAY) : null);
-    const complete = steps.length > 0 && dated.length === steps.length;
-    const totalDays = complete ? dayOf(steps[steps.length - 1]) : null;
     const passed = d.quality_check === 'passed';
     const origin = d.origin_word || 'herb'; // e.g. "farm" for ghee
 
@@ -2133,9 +2127,6 @@ ease;
 
     // path
     $('avPathTitle').textContent = `From ${origin} to home`;
-    $('avPathSub').textContent = complete
-      ? `${totalDays} days, ${steps.length} steps, every one recorded`
-      : `${dated.length} of ${steps.length} steps complete`;
     $('avPath').replaceChildren(...steps.map((s, i) => {
       const next = steps[i + 1];
       const li = make('li', 'av-step' + (s.date ? '' : ' av-step--pending') + (next && !next.date ? ' av-step--to-pending' : ''));
@@ -2968,7 +2959,7 @@ ease;
 </style>
 
 
-</div><div id="shopify-block-AUldkYklma0JiZVNkN__9388344762370057067" class="shopify-block shopify-app-block"><!-- BEGIN app snippet: vite-tag -->
+</div><!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist --><div id="shopify-block-AUldkYklma0JiZVNkN__9388344762370057067" class="shopify-block shopify-app-block"><!-- BEGIN app snippet: vite-tag -->
 
 
   
@@ -2996,7 +2987,7 @@ ease;
 
 
 
-</div><!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist -->
+</div>
 </body>
 </html>
 
