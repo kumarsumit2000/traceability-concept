@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="836f1449-5886-4141-b377-35be113e19f2" data-expiration="1826127203000"><meta name="shopify-s" content="2ae8e76e-4843-443f-a860-255fa47b07bd" data-expiration="1794571403000"><meta name="request-id" content="332c8222-c148-4ac4-baf9-211328b8a391-1794569603"        >
+<meta name="shopify-y" content="87c0e72f-fd22-49dd-a413-137c677e9391" data-expiration="1826127361000"><meta name="shopify-s" content="b2196beb-558f-4fd3-b3e7-93f92d3f1fce" data-expiration="1794571561000"><meta name="request-id" content="33e20eba-2731-41d2-9615-9ae57a8fca9f-1794569761"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -2206,8 +2206,9 @@ ease;
     window.scrollTo({ top: 0 });
   });
 
-  el.input.placeholder = `e.g. ${Object.keys(DATA)[0] || 'AV123456'}`;
-  const initial = new URLSearchParams(location.search).get('batch');
+  const ids = Object.keys(DATA);
+  el.input.placeholder = `e.g. ${ids[0] || 'AV123456'}`;
+  const initial = new URLSearchParams(location.search).get('batch') || (ids.length === 1 ? ids[0] : null); // single-product page
   initial ? lookup(initial, true) : show('lookup');
 })();
 </script>
