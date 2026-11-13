@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="707513f2-5ad1-414c-9a59-5983fa912f9b" data-expiration="1826126381000"><meta name="shopify-s" content="6e8d82ea-bd41-45b3-a869-a16394a9caab" data-expiration="1794570581000"><meta name="request-id" content="12e744c7-677a-425e-8969-b6066eeb1a6c-1794568781"        >
+<meta name="shopify-y" content="72393e34-66ff-4667-8bf2-b697e2293cef" data-expiration="1826126464000"><meta name="shopify-s" content="b3a8cf4e-d1aa-4ff0-a69f-804b39146fc2" data-expiration="1794570664000"><meta name="request-id" content="da725dce-ceaf-411c-aa64-a39a81048645-1794568864"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1620,24 +1620,20 @@ ease;
       "tested_on": "2026-11-07",
       "results": [
         {
-          "test": "Adulteration",
-          "detail": "Vegetable oils, vanaspati, animal body fat",
-          "result": "Not detected"
+          "test": "A2 Beta-Casein",
+          "result": "Verified"
         },
         {
-          "test": "Moisture content",
-          "detail": "Water left after clarifying",
+          "test": "Essential Fatty Acids",
+          "result": "Passed"
+        },
+        {
+          "test": "Source of Vitamins",
           "result": "Within limits"
         },
         {
-          "test": "Free fatty acids",
-          "detail": "Freshness and rancidity marker",
-          "result": "Within limits"
-        },
-        {
-          "test": "Microbial load",
-          "detail": "Total plate count, yeast & mould, pathogens",
-          "result": "Pass"
+          "test": "Purity & quality checks",
+          "result": "Passed"
         }
       ]
     }
@@ -2180,7 +2176,7 @@ ease;
       $('avLabSub').textContent = `Tested on ${fmt(lab.tested_on)} · ${(lab.results || []).length} checks`;
       $('avResults').replaceChildren(...(lab.results || []).map((r) => {
         const tr = make('tr');
-        const t = make('td'); t.append(make('strong', null, r.test), make('small', null, r.detail || ''));
+        const t = make('td'); t.append(make('strong', null, r.test)); if (r.detail) t.append(make('small', null, r.detail));
         const res = make('td'); const pill = make('span', 'av-pass'); pill.innerHTML = TICK; pill.append(r.result); res.append(pill);
         tr.append(t, res);
         return tr;
