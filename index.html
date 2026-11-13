@@ -474,7 +474,10 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 <!-- End Google Tag Manager -->
   
-<!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
+<!-- BEGIN app block: shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed -->
+
+
+<!-- END app block --><!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
 
 <!-- END app block --><!-- BEGIN app block: shopify://apps/gsc-countdown-timer/blocks/countdown-bar/58dc5b1b-43d2-4209-b1f3-52aff31643ed --><style>
   .gta-block__error {
@@ -501,9 +504,6 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 </style>
 
 
-
-
-<!-- END app block --><!-- BEGIN app block: shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed -->
 
 
 <!-- END app block --><!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
@@ -538,7 +538,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 
 
-<noscript><link rel="stylesheet" type="text/css" media="all" href="https://cdn.shopify.com/extensions/01a1c9b5-22cf-7082-9140-acbad5f09791/judgeme-854/assets/shopify_v2.css"></noscript>
+<noscript><link rel="stylesheet" type="text/css" media="all" href="https://cdn.shopify.com/extensions/01a1ced3-0919-7ad9-b5cd-5f6347f722c5/judgeme-858/assets/shopify_v2.css"></noscript>
 
 <!-- BEGIN app snippet: theme_fix_tags -->
 
@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="b1771a69-48d3-41e0-8234-cc35d589594d" data-expiration="1825949142000"><meta name="shopify-s" content="288d86ef-4176-4b2a-8fe3-fdf57d731cc2" data-expiration="1794393342000"><meta name="request-id" content="5bd48462-eb59-4ebc-8853-de939b19f8b6-1794391542"        >
+<meta name="shopify-y" content="c6e42892-efab-4cd1-ae9a-333c3731f321" data-expiration="1826126204000"><meta name="shopify-s" content="e0bc928d-589b-444a-96c7-602f8bacad4a" data-expiration="1794570404000"><meta name="request-id" content="d7065b4c-8d07-419c-9f74-5c4eddb48d26-1794568604"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1373,7 +1373,7 @@ ease;
     </article>
 
     <section class="av-block">
-      <header class="av-head"><h2>What's inside this batch</h2><p>Key ingredients and where they came from</p></header>
+      <header class="av-head"><h2>What's inside this batch</h2><p>Key ingredients in this batch</p></header>
       <ul class="av-herbs" id="avHerbs"></ul>
     </section>
 
@@ -1408,7 +1408,7 @@ ease;
         <li>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 8 22l4-2 4 2-1-7.5M9.5 9l1.8 1.8L14.5 7.5"/></svg>
           <strong>Certified facility</strong>
-          <span>Made in a licensed, quality-certified facility. <a href="https://ayurvedant.com/pages/our-certificate">View certificates</a></span>
+          <span>Made in a licensed, quality-certified facility.</span>
         </li>
         <li>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21V10M12 10c0-4-3-7-7-7 0 4 3 7 7 7zM12 14c0-4 3-7 7-7 0 4-3 7-7 7z"/></svg>
@@ -2149,7 +2149,7 @@ ease;
       const head = make('div');
       head.append(make('h3', null, h.name), make('p', 'av-herb__bot', h.botanical));
       const dl = make('dl');
-      [['Form', h.part], ['Sourced from', h.region]].forEach(([k, v]) => { if (v) dl.append(make('dt', null, k), make('dd', null, v)); });
+      [['Form', h.part]].forEach(([k, v]) => { if (v) dl.append(make('dt', null, k), make('dd', null, v)); });
       li.append(icon, head, dl);
       return li;
     }));
@@ -2163,8 +2163,7 @@ ease;
       const next = steps[i + 1];
       const li = make('li', 'av-step' + (s.date ? '' : ' av-step--pending') + (next && !next.date ? ' av-step--to-pending' : ''));
       const node = make('div', 'av-step__node'); node.innerHTML = svg(iconFor(s.name));
-      const day = dayOf(s);
-      li.append(node, make('span', 'av-step__day', day == null ? 'Upcoming' : `Day ${day}`), make('h3', null, s.name),
+      li.append(node, make('span', 'av-step__day', `Step ${i + 1}`), make('h3', null, s.name),
         make('p', 'av-step__date', fmt(s.date)));
       if (s.desc) li.append(make('p', 'av-step__desc', s.desc));
       return li;
@@ -2949,12 +2948,12 @@ ease;
 
 <!-- End Google Tag Manager (noscript) -->
 <style> .jdgm-histogram__frequency {display: none;} </style>
-<div id="shopify-block-AeXdFL3NiTloxRjRUY__14952540001915115444" class="shopify-block shopify-app-block">
+<!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist --><div id="shopify-block-AeXdFL3NiTloxRjRUY__14952540001915115444" class="shopify-block shopify-app-block">
 
 
 
 
-<link id="upcart-stylesheet" rel="preload" href="https://cdn.shopify.com/extensions/01a1c723-d166-768a-a973-3f8f77a78d9c/upcart-2-471/assets/upcart-stylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link id="upcart-stylesheet" rel="preload" href="https://cdn.shopify.com/extensions/01a1cb01-e664-75e0-b367-b9bef26500fb/upcart-2-472/assets/upcart-stylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 
 
@@ -2992,11 +2991,11 @@ ease;
 </style>
 
 
-</div><!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist --><div id="shopify-block-AUldkYklma0JiZVNkN__9388344762370057067" class="shopify-block shopify-app-block"><!-- BEGIN app snippet: vite-tag -->
+</div><div id="shopify-block-AUldkYklma0JiZVNkN__9388344762370057067" class="shopify-block shopify-app-block"><!-- BEGIN app snippet: vite-tag -->
 
 
   
-  <link href="//cdn.shopify.com/extensions/01a1ca03-034c-7fbc-908a-17a5265c97c3/essential-cart-drawer-1120/assets/app-embed-BLkwqsiN.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="//cdn.shopify.com/extensions/01a1d494-bcae-7707-ba61-e87095fa6ac2/essential-cart-drawer-1131/assets/app-embed-21scwmuL.css" rel="stylesheet" type="text/css" media="all" />
 
 <!-- END app snippet -->
 
