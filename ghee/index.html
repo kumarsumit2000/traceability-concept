@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="24d24b5a-2428-4ede-9029-495d7a2bf068" data-expiration="1826540664000"><meta name="shopify-s" content="2b19b171-0286-4d19-9a78-b8726e8e701c" data-expiration="1794984864000"><meta name="request-id" content="7735c6cf-991d-4b72-95a6-0f0dc110d181-1794983064"        >
+<meta name="shopify-y" content="6b237592-3042-427f-814d-da1d6dd33e93" data-expiration="1826541084000"><meta name="shopify-s" content="d676207b-ec50-4fee-a1b8-1704e35bf0fa" data-expiration="1794985284000"><meta name="request-id" content="bf72c7f0-b90a-470a-9ade-b11237d82e84-1794983483"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1391,7 +1391,6 @@ ease;
 
     <div class="av-actions">
       <a id="avReorder" class="av-btn">Reorder this product</a>
-      <a class="av-btn av-btn--ghost" href="https://ayurvedant.com/pages/doctor-consultation">Talk to an Ayurvedic doctor</a>
     </div>
     <!-- hidden for now: remove the hidden attribute to bring it back --><p class="av-again" hidden><button id="avAgain" type="button" class="av-link">← Check another batch</button></p>
   </section>
@@ -1732,6 +1731,7 @@ ease;
     const reorder = $('avReorder');
     const url = safeUrl(d.product_url);
     reorder.hidden = !url;
+    reorder.parentElement.hidden = !url; // Reorder is the only action left: hide the empty row
     if (url) reorder.href = url;
 
     document.title = `Batch ${d.batch_no} · ${baseTitle}`;
