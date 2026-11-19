@@ -474,9 +474,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 <!-- End Google Tag Manager -->
   
-<!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
-
-<!-- END app block --><!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
+<!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
 
 
 
@@ -508,7 +506,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 
 
-<noscript><link rel="stylesheet" type="text/css" media="all" href="https://cdn.shopify.com/extensions/01a1e918-5b6b-778d-a24e-2bd2c509db9d/judgeme-864/assets/shopify_v2.css"></noscript>
+<noscript><link rel="stylesheet" type="text/css" media="all" href="https://cdn.shopify.com/extensions/01a1ef7b-c47f-7590-a206-c3509fe64104/judgeme-866/assets/shopify_v2.css"></noscript>
 
 <!-- BEGIN app snippet: theme_fix_tags -->
 
@@ -544,6 +542,8 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
 
 
+<!-- END app block --><!-- BEGIN app block: shopify://apps/b-s-announcements/blocks/boostandsales_bar/622d5231-2b17-46c2-b570-613654521b45 -->
+
 <!-- END app block --><!-- BEGIN app block: shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed -->
 
 
@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="30832a0d-cd72-4837-8e72-57cbfd76425b" data-expiration="1826555210000"><meta name="shopify-s" content="0809be74-a309-449a-9f7b-9c9e9a8081e7" data-expiration="1794999410000"><meta name="request-id" content="52c733c5-b78f-4b7d-be8b-96d573f420b3-1794997610"        >
+<meta name="shopify-y" content="6a56b39a-06ac-43d1-9b1d-02366c505657" data-expiration="1826636692000"><meta name="shopify-s" content="80a7862f-97cc-4182-8671-7107b44c8bb4" data-expiration="1795080892000"><meta name="request-id" content="45884b17-1be8-4091-9ab6-6ef991f31f2b-1795079092"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1548,36 +1548,43 @@ ease;
     "region": "Gujarat"
    }
   ],
+  "journey_title": "From Farm to Home",
   "journey": [
    {
     "name": "Milk Collection",
-    "desc": "Fresh A2 milk collected",
-    "date": "2026-11-03"
+    "desc": "Fresh milk collected from A2 Gir Cows.",
+    "date": "2026-11-03",
+    "icon": "milk"
    },
    {
     "name": "Curd Setting",
-    "desc": "Milk boiled and set into curd",
-    "date": "2026-11-03"
+    "desc": "Milk boiled and naturally set into curd.",
+    "date": "2026-11-03",
+    "icon": "curd"
    },
    {
     "name": "Bilona Churning",
-    "desc": "Curd churned using bilona method to separate makkhan.",
-    "date": "2026-11-04"
+    "desc": "Curd churned using the traditional Bilona method to separate makhan (butter).",
+    "date": "2026-11-04",
+    "icon": "churn"
    },
    {
-    "name": "Slow Clarifying",
-    "desc": "Makkhan slow heated on a low flame",
-    "date": "2026-11-04"
+    "name": "Slow Clarification",
+    "desc": "Makhan slowly heated over a low flame to prepare pure ghee.",
+    "date": "2026-11-04",
+    "icon": "flame"
    },
    {
-    "name": "Lab Tested",
-    "desc": "Purity & quality checks passed",
-    "date": "2026-11-07"
+    "name": "Lab Testing",
+    "desc": "Quality and purity tested to ensure high standards.",
+    "date": "2026-11-07",
+    "icon": "lab"
    },
    {
-    "name": "Warehouse Handover",
-    "desc": "Jarred & dispatched",
-    "date": "2026-11-08"
+    "name": "Packaging & Dispatch",
+    "desc": "Carefully packed and dispatched to your home.",
+    "date": "2026-11-08",
+    "icon": "box"
    }
   ],
   "lab": {
@@ -1623,6 +1630,14 @@ ease;
     `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
   const LEAF = '<path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19 14 10"/>';
   // First regex that matches the step name wins.
+  const NAMED_ICONS = { // same set as the Shopify section's icon picker
+    milk: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+    curd: '<path d="M4 10h16l-1.5 8a3 3 0 0 1-3 2.5h-7a3 3 0 0 1-3-2.5z"/><path d="M3 10h18M8 6c0 1 1 1.5 1 2.5M12 5c0 1 1 1.5 1 2.5M16 6c0 1 1 1.5 1 2.5"/>',
+    churn: '<path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4h-4"/><path d="M12 8v8M9.5 12h5"/>',
+    flame: '<path d="M12 3c1 3-2 4-2 7a4 4 0 0 0 8 0c0-1-.5-2-1-3 0 4-5 4-5-4z"/><path d="M8 14c-2 1-3 3-3 5h14c0-2-1-4-3-5"/>',
+    lab: '<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/>',
+    box: '<path d="M3 8l9-5 9 5v10l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v10"/>'
+  };
   const ICONS = [
     [/milk/i, '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>'],
     [/harvest|herb|leaf|fruit|root|resin|sourc/i, LEAF],
@@ -1632,6 +1647,7 @@ ease;
     [/warehouse|dispatch|pack/i, '<path d="M3 8l9-5 9 5v10l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v10"/>']
   ];
   const iconFor = (name) => (ICONS.find(([re]) => re.test(name)) || [, '<circle cx="12" cy="12" r="4"/>'])[1];
+  const stepIcon = (s) => NAMED_ICONS[s.icon] || iconFor(s.name);
   const JAR = `<svg viewBox="0 0 160 180" width="70%" role="img" aria-label="Product jar">
     <rect x="38" y="18" width="84" height="24" rx="5" fill="#4F6120"/><rect x="44" y="40" width="72" height="10" fill="#E3EAC8"/>
     <rect x="26" y="48" width="108" height="118" rx="18" fill="#F2D27A" stroke="#D9B85C" stroke-width="2"/>
@@ -1701,11 +1717,11 @@ ease;
     }));
 
     // path
-    $('avPathTitle').textContent = `From ${origin} to home`;
+    $('avPathTitle').textContent = d.journey_title || `From ${origin} to home`;
     $('avPath').replaceChildren(...steps.map((s, i) => {
       const next = steps[i + 1];
       const li = make('li', 'av-step' + (s.date ? '' : ' av-step--pending') + (next && !next.date ? ' av-step--to-pending' : ''));
-      const node = make('div', 'av-step__node'); node.innerHTML = svg(iconFor(s.name));
+      const node = make('div', 'av-step__node'); node.innerHTML = svg(stepIcon(s));
       li.append(node, make('span', 'av-step__day', `Step ${i + 1}`), make('h3', null, s.name));
       if (!s.date) li.append(make('p', 'av-step__date', 'Pending')); // status, not a date
       if (s.desc) li.append(make('p', 'av-step__desc', s.desc));
@@ -2492,7 +2508,7 @@ ease;
 
 <!-- End Google Tag Manager (noscript) -->
 <style> .jdgm-histogram__frequency {display: none;} </style>
-<div id="shopify-block-AUldkYklma0JiZVNkN__9388344762370057067" class="shopify-block shopify-app-block"><!-- BEGIN app snippet: vite-tag -->
+<!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist --><div id="shopify-block-AUldkYklma0JiZVNkN__9388344762370057067" class="shopify-block shopify-app-block"><!-- BEGIN app snippet: vite-tag -->
 
 
   
@@ -2525,7 +2541,7 @@ ease;
 
 
 
-<link id="upcart-stylesheet" rel="preload" href="https://cdn.shopify.com/extensions/01a1ea56-394b-72e1-894e-5d30c6b8938d/upcart-2-477/assets/upcart-stylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link id="upcart-stylesheet" rel="preload" href="https://cdn.shopify.com/extensions/01a1f057-1e5a-7c5e-8ffe-52f05fe01880/upcart-2-480/assets/upcart-stylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 
 
@@ -2563,7 +2579,7 @@ ease;
 </style>
 
 
-</div><!-- Failed to render app block "15248664582119306304": app block path "shopify://apps/verifast-ai-sales-agent/blocks/chat_bot/e8318cdf-ff4f-416b-b090-1fb4ad1a937c" does not exist -->
+</div>
 </body>
 </html>
 
