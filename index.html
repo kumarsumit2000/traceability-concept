@@ -557,7 +557,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
   
 
-<meta name="shopify-y" content="ae9e6f59-4e72-4134-9b59-c9184f162b70" data-expiration="1826636691000"><meta name="shopify-s" content="c78c6d7d-58a4-4e18-8b47-24e02f1e8142" data-expiration="1795080891000"><meta name="request-id" content="2b61d4b0-0ee7-4ab5-86d9-4babe892ff61-1795079091"        >
+<meta name="shopify-y" content="71e71487-052d-420d-8351-39d59b9b37c7" data-expiration="1826636806000"><meta name="shopify-s" content="264e7c3e-2e19-4e22-b7e7-780d8afa630a" data-expiration="1795081006000"><meta name="request-id" content="d64da3be-16e6-4447-91c5-307138cc3a29-1795079206"        >
 </head><body id="consult-us" class="is-page-loading template-page allow-text-animations allow-grid-animations" data-animations="true">
 <div role="note" style="position:relative;z-index:2147483647;background:#2E3B12;color:#fff;text-align:center;padding:10px 16px;font:500 13px/1.4 Poppins,system-ui,sans-serif">Ayurvedant traceability preview · sample batch data</div>
   <a class="in-page-link skip-link" href="#MainContent" data-skip-content>Skip to content</a>
@@ -1366,7 +1366,10 @@ ease;
 
     <section class="av-block">
       <header class="av-head"><h2>What's inside this batch</h2><p>Key ingredients in this batch</p></header>
-      <ul class="av-herbs" id="avHerbs"></ul>
+      <div class="av-inside">
+        <ul class="av-herbs" id="avHerbs"></ul>
+        <div class="av-inside__art" id="avInsideArt" hidden></div>
+      </div>
     </section>
 
     <section class="av-block">
@@ -1457,6 +1460,9 @@ ease;
 .av-head p,.av-lab__head p{color:var(--av-muted);font-size:14px;margin-top:4px}
 
 /* herbs */
+.av-inside{display:grid;gap:24px}
+.av-inside:has(.av-inside__art:not([hidden])){grid-template-columns:minmax(0,360px) minmax(0,1fr);align-items:center;gap:40px}
+.av-inside__art img{display:block;width:100%;height:auto;max-height:230px;object-fit:contain;object-position:right center}
 .av-herbs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px}
 .av-herb{flex:1 1 250px;max-width:360px;display:grid;grid-template-columns:44px 1fr;gap:0 14px;border:1px solid var(--av-line);border-radius:8px;padding:18px;background:var(--av-softer)}
 .av-herb__icon{width:44px;height:44px;border-radius:50%;background:var(--av-soft);color:var(--av-btn);display:flex;align-items:center;justify-content:center}
@@ -1514,6 +1520,8 @@ ease;
   .av-step--to-pending::after{background:repeating-linear-gradient(180deg,var(--av-pend) 0 6px,transparent 6px 11px)}
   .av-step__day{margin-top:4px}
   .av-herb{max-width:none}
+  .av-inside:has(.av-inside__art:not([hidden])){grid-template-columns:1fr;gap:20px}
+  .av-inside__art img{object-position:center}
   .av-results td{padding:12px 14px}
 }
 @media (max-width:480px){
@@ -1548,6 +1556,7 @@ ease;
         "region": "Gujarat"
       }
     ],
+    "inside_image": "https://kumarsumit2000.github.io/traceability-concept/assets/ghee-farm-scene.png",
     "journey_title": "From Farm to Home",
     "journey": [
       {
@@ -2121,6 +2130,11 @@ ease;
       li.append(icon, head, dl);
       return li;
     }));
+
+    const art = $('avInsideArt');
+    art.replaceChildren();
+    art.hidden = !safeUrl(d.inside_image);
+    if (!art.hidden) { const img = make('img'); img.src = d.inside_image; img.alt = ''; img.loading = 'lazy'; art.append(img); }
 
     // path
     $('avPathTitle').textContent = d.journey_title || `From ${origin} to home`;
